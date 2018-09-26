@@ -11,7 +11,7 @@ const signUp = function (userData) {
   })
 }
 
-const signIn = function (userData) {
+const logIn = function (userData) {
   return $.ajax({
     url: config.apiUrl + '/sign-in',
     method: 'POST',
@@ -19,7 +19,7 @@ const signIn = function (userData) {
   })
 }
 
-const signOut = function () {
+const logOut = function () {
   return $.ajax({
     url: config.apiUrl + '/sign-out',
     headers: {
@@ -42,7 +42,7 @@ const changePassword = function (password) {
 
 module.exports = {
   signUp,
-  signIn,
-  signOut,
+  logIn,
+  logOut,
   changePassword
 }
