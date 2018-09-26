@@ -18,8 +18,8 @@ const signInSuccess = function (response) {
   $('#display-message').html('Sign in successful')
   $('#display-message').css('color', 'green')
   $('#sign-up-form').trigger('reset')
-    store.user = response.user
-  }
+  store.user = response.user
+}
 
 const signInFailure = function () {
   $('#display-message').html('Something went wrong, please try again')
