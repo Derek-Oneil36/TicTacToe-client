@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>TicTacToe</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,14 +12,30 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <h1></h1>
       <h3 id="display-message"></h3>
 
       <form id="sign-up-form">
-          <legend>Sign Up</legend>
+          <legend>Creat Account</legend>
           <input required type="email" name="credentials[email]" placeholder="Enter Email"/>
           <input required type="password" name="credentials[password]" placeholder="Enter Password"/>
           <input required type="password" name="credentials[password_confirmation]" placeholder="Confirm Password"/>
+          <input type="submit">
+      </form>
+
+      <form id="log-in-form">
+          <legend>Log In</legend>
+          <input required type="email" name="credentials[email]" placeholder="Enter Email"/>
+          <input required type="password" name="credentials[password]" placeholder="Enter Password"/>
+          <input type="submit">
+      </form>
+
+      <button id="log-out-button" class="hidden">Log out</button>
+
+      <form id="change-password-form">
+          <legend>Change Password</legend>
+          <input required type="password" name="passwords[old]" placeholder="Enter Old Password"/>
+          <input required type="password" name="passwords[new]" placeholder="Enter New Password"/>
           <input type="submit">
       </form>
 

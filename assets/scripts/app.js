@@ -9,6 +9,7 @@ const authEvents = require('./auth/events.js')
 $(() => {
   // your JS code goes here
   $('#sign-up-form').on('submit', authEvents.onSignUp)
-  $('#sign-in-form').on('submit', authEvents.onSignIn)
-  $('#sign-out-button').on('click', authEvents.onSignOut)
+  $('#log-in-form').on('submit', authEvents.onSignIn)
+  $('#log-out-button').on('click', authEvents.onSignOut)
+  $('#change-password-form').on('submit', authEvents.onchangePassword)
 })
