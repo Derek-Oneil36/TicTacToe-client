@@ -1,6 +1,6 @@
 'use strict'
 
-// An empty array that stores our game board
+// The game board
 const board = ['', '', '', '', '', '', '', '', '']
 
 // the current player
@@ -16,23 +16,10 @@ const switchPlayer = function () {
 }
 
 /*
-A function that adds the current player to a position on the board if
-the position is empty, the current player will then switch when we call back
-and use the switchPlayer function. Else The player will be alerted if the
-position is occupied.
+ A function that will check the outcome of the game and return winner, draw,
+ or see if the game should keep going.
 */
-const addPlayer = function (post) {
-  if (board[post] === '') {
-    board[post] = currentPlayer
-    switchPlayer()
-  } else {
-    console.log('choose another spot')
-  }
-}
-
 const outcome = function () {
-  const draw = 'Draw Play Again!'
-
   if (board[0] !== '' && board[0] === board[1] && board[1] === board[2]) {
     return 'The Winner is ' + board[0]
   } else if (board[3] !== '' && board[3] === board[4] && board[4] === board[5]) {
@@ -49,33 +36,42 @@ const outcome = function () {
     return 'The Winner is ' + board[0]
   } else if (board[2] !== '' && board[2] === board[4] && board[4] === board[6]) {
     return 'The Winner is ' + board[3]
+  } else if (board.every(element => element !== '')) {
+    return 'Draw!'
   }
-
-  return draw
+  return 'Keep Playing'
 }
-// Write a function that checks if someone wins the game
-// const checkForWinner = function() {
-// check for top row winner by seeing if all match and are not empty string
-// if (board[0] === board[1] && board[1] === board[2] && board[0] !== '') {
-// return 'Winner is ' + board[0]
-//  }
-// check for all other combos
-// middle row
-// bottom row
-// left column
-// middle column
-// right column
-// right to let diagonal
-// left to right diagonal
-// check for tie
-// else no winner yet
-// }
 
-console.log(addPlayer(6))
-console.log(addPlayer(5))
+/*
+A function that adds the current player to a position on the board if
+the position is empty, the current player will then switch when we call back
+and use the switchPlayer function. Else nothing will happen if theposition is
+occupied.
+*/
+const addPlayer = function (post) {
+  // checking to see if the spot on the board is empty
+  if (board[post] === '') {
+    // adding the current player to the spot
+    board[post] = currentPlayer
+    // checking for a winner
+    outcome(board)
+    // switches the player
+    switchPlayer(currentPlayer)
+  }
+}
+
+addPlayer(6)
+addPlayer(5)
+addPlayer(5)
+addPlayer(6)
+addPlayer(0)
+addPlayer(7)
+addPlayer(1)
+addPlayer(8)
+
+console.log(board)
 
 module.exports = {
-  board,
   addPlayer,
   switchPlayer,
   outcome
