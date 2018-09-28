@@ -16,25 +16,19 @@
       <h3 id="display-message"></h3>
 
       <form id="sign-up-form">
-          <legend>Creat Account</legend>
           <input required type="email" name="credentials[email]" placeholder="Enter Email"/>
           <input required type="password" name="credentials[password]" placeholder="Enter Password"/>
           <input required type="password" name="credentials[password_confirmation]" placeholder="Confirm Password"/>
-          <input type="submit">
+          <input type="submit" value="Sign Up">
       </form>
 
       <br>
 
-      <form id="log-in-form">
-          <legend>Log In</legend>
+      <form id="sign-in-form">
           <input required type="email" name="credentials[email]" placeholder="Enter Email"/>
           <input required type="password" name="credentials[password]" placeholder="Enter Password"/>
-          <input type="submit">
+          <input type="submit" value="Log In">
       </form>
-
-      <br>
-
-      <button id="log-out-button" class="hidden">Log out</button>
 
       <br>
 
@@ -48,27 +42,41 @@
         <br>
 
         <form id="create-game">
-            <legend>New Game</legend>
-            <input type="submit">
+            <input type="submit" value="New Game">
         </form>
+
+        <br>
+
+        <h2>Tic Tac Toe Gird</h2>
+
+          <div class="container">
+            <div class="row">
+            <div class="col-6 col-md-4 box spot" id="0"></div>
+            <div class="col-6 col-md-4 box spot" id="1"></div>
+            <div class="col-6 col-md-4 box spot" id="2"></div>
+            <div class="col-6 col-md-4 box spot" id="3"></div>
+            <div class="col-6 col-md-4 box spot" id="4"></div>
+            <div class="col-6 col-md-4 box spot" id="5"></div>
+            <div class="col-6 col-md-4 box spot" id="6"></div>
+            <div class="col-6 col-md-4 box spot" id="7"></div>
+            <div class="col-6 col-md-4 box spot" id="8"></div>
+          </div>
+          </div>
+
+          <br>
+
+        <button id="log-out-button" class="hidden">Log out</button>
 
           <br>
 
           <form id="game-stats">
-              <legend>Game Stats</legend>
-              <input type="submit" value="Game Stats">
+              <input type="submit" value="Stats">
           </form>
 
             <br>
 
 
-      <h2>Tic Tac Toe Gird</h2>
 
-        <div class="container">
-          <div class="grid">
-
-          </div>
-        </div>
 
     </body>
 </html>

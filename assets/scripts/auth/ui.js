@@ -14,7 +14,7 @@ const signUpFailure = function () {
   $('#sign-up-form').trigger('reset')
 }
 
-const logInSuccess = function (response) {
+const signInSuccess = function (response) {
   $('#display-message').html('Logged in')
   $('#display-message').css('color', 'green')
   $('#sign-up-form').trigger('reset')
@@ -25,7 +25,7 @@ const logInSuccess = function (response) {
   $('#log-out-button').removeClass('hidden')
 }
 
-const logInFailure = function () {
+const signInFailure = function () {
   $('#display-message').html('Something went wrong, please try again')
   $('#display-message').css('color', 'red')
   $('#sign-up-form').trigger('reset')
@@ -81,11 +81,23 @@ const getStatsFailure = function () {
   $('#change-password-form').trigger('reset')
 }
 
+const clickedSuccess = function () {
+  $('#display-message').html('Clicked worked')
+  $('#display-message').css('color', 'green')
+  $('#change-password-form').trigger('reset')
+}
+
+const clickedFailure = function () {
+  $('#display-message').html('Something went wrong, please try again')
+  $('#display-message').css('color', 'red')
+  $('#change-password-form').trigger('reset')
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
-  logInSuccess,
-  logInFailure,
+  signInSuccess,
+  signInFailure,
   logOutSuccess,
   logOutFailure,
   changePasswordSuccess,
@@ -93,5 +105,7 @@ module.exports = {
   createGameSuccess,
   createGameFailure,
   getStatsSuccess,
-  getStatsFailure
+  getStatsFailure,
+  clickedSuccess,
+  clickedFailure
 }

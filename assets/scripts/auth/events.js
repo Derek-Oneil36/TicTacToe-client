@@ -3,25 +3,26 @@
 const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api.js')
 const ui = require('./ui.js')
+const engine = require('../engine.js')
 
 const onSignUp = function (event) {
   // stops the page from refreshing when action is called
   event.preventDefault()
-  const formData = getFormFields(event.target)
-  console.log(formData)
-  api.signUp(formData)
+  const userData = getFormFields(event.target)
+  console.log(userData)
+  api.signUp(userData)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
 }
 
-const onLogIn = function (event) {
+const onSignIn = function (event) {
   // stops the page from refreshing when action is called
   event.preventDefault()
-  const formData = getFormFields(event.targt)
-  console.log(formData)
-  api.logIn(formData)
-    .then(ui.logInSuccess)
-    .catch(ui.logInFailure)
+  const userData = getFormFields(event.target)
+  console.log(userData)
+  api.signIn(userData)
+    .then(ui.signInSuccess)
+    .catch(ui.signInFailure)
 }
 
 const onLogOut = function (event) {
@@ -33,44 +34,45 @@ const onLogOut = function (event) {
 const onChangePassword = function (event) {
   // stops the page from refreshing when action is called
   event.preventDefault()
-  const formData = getFormFields(event.targt)
-  console.log(formData)
-  api.changePassword(formData)
+  const password = getFormFields(event.target)
+  console.log(password)
+  api.changePassword(password)
     .then(ui.changePasswordSuccess)
-    .cath(ui.changePasswordFailure)
+    .catch(ui.changePasswordFailure)
 }
 
 const onCreateGame = function (event) {
   // stops the page from refreshing when action is called
   event.preventDefault()
-  const formData = getFormFields(event.targt)
-  console.log(formData)
-  api.createGame(formData)
+  const userData = getFormFields(event.target)
+  console.log(userData)
+  api.createGame(userData)
     .then(ui.createGameSuccess)
-    .cath(ui.createGameFailure)
+    .catch(ui.createGameFailure)
 }
 
 const onGetStats = function (event) {
   // stops the page from refreshing when action is called
   event.preventDefault()
-  const formData = getFormFields(event.targt)
+  const formData = getFormFields(event.target)
   console.log(formData)
   api.getStats(formData)
     .then(ui.getStatsSuccess)
-    .cath(ui.getStatsFailure)
+    .catch(ui.getStatsFailure)
 }
-/* a function that takes the click event and adds 'X s text to what was clicked.'
+// a function that takes the click event and adds 'X s text to what was clicked.'
 const onClicked = function (event) {
   event.preventDefault()
-
-  $(event.target).text('X')
+  const eventTarget = $(event.target)[0]['id']
+  $(event.target).text(engine.addPlayer(eventTarget))
 }
-*/
+
 module.exports = {
   onSignUp,
-  onLogIn,
+  onSignIn,
   onLogOut,
   onChangePassword,
   onCreateGame,
-  onGetStats
+  onGetStats,
+  onClicked
 }
