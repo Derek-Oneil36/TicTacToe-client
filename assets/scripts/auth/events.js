@@ -37,9 +37,17 @@ const onChangePassword = function (event) {
     .cath(console.log)
 }
 
+// a function that takes the click event and adds 'X s text to what was clicked.'
+const onClicked = function (event) {
+  event.preventDefault()
+
+  $(event.target).text('X')
+}
+
 module.exports = {
   onSignUp,
   onLogIn,
   onLogOut,
-  onChangePassword
+  onChangePassword,
+  onClicked
 }
