@@ -57,6 +57,30 @@ const changePasswordFailure = function () {
   $('#change-password-form').trigger('reset')
 }
 
+const createGameSuccess = function () {
+  $('#display-message').html('Game Created!')
+  $('#display-message').css('color', 'green')
+  $('#change-password-form').trigger('reset')
+}
+
+const createGameFailure = function () {
+  $('#display-message').html('Something went wrong, please try again')
+  $('#display-message').css('color', 'red')
+  $('#change-password-form').trigger('reset')
+}
+
+const getStatsSuccess = function () {
+  $('#display-message').html('Your password has changed')
+  $('#display-message').css('color', 'green')
+  $('#change-password-form').trigger('reset')
+}
+
+const getStatsFailure = function () {
+  $('#display-message').html('Something went wrong, please try again')
+  $('#display-message').css('color', 'red')
+  $('#change-password-form').trigger('reset')
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -65,5 +89,9 @@ module.exports = {
   logOutSuccess,
   logOutFailure,
   changePasswordSuccess,
-  changePasswordFailure
+  changePasswordFailure,
+  createGameSuccess,
+  createGameFailure,
+  getStatsSuccess,
+  getStatsFailure
 }

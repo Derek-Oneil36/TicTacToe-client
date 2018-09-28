@@ -5,6 +5,7 @@ const api = require('./api.js')
 const ui = require('./ui.js')
 
 const onSignUp = function (event) {
+  // stops the page from refreshing when action is called
   event.preventDefault()
   const formData = getFormFields(event.target)
   console.log(formData)
@@ -14,6 +15,7 @@ const onSignUp = function (event) {
 }
 
 const onLogIn = function (event) {
+  // stops the page from refreshing when action is called
   event.preventDefault()
   const formData = getFormFields(event.targt)
   console.log(formData)
@@ -29,25 +31,46 @@ const onLogOut = function (event) {
 }
 
 const onChangePassword = function (event) {
+  // stops the page from refreshing when action is called
   event.preventDefault()
   const formData = getFormFields(event.targt)
   console.log(formData)
   api.changePassword(formData)
-    .then(console.log)
-    .cath(console.log)
+    .then(ui.changePasswordSuccess)
+    .cath(ui.changePasswordFailure)
 }
 
-// a function that takes the click event and adds 'X s text to what was clicked.'
+const onCreateGame = function (event) {
+  // stops the page from refreshing when action is called
+  event.preventDefault()
+  const formData = getFormFields(event.targt)
+  console.log(formData)
+  api.createGame(formData)
+    .then(ui.createGameSuccess)
+    .cath(ui.createGameFailure)
+}
+
+const onGetStats = function (event) {
+  // stops the page from refreshing when action is called
+  event.preventDefault()
+  const formData = getFormFields(event.targt)
+  console.log(formData)
+  api.getStats(formData)
+    .then(ui.getStatsSuccess)
+    .cath(ui.getStatsFailure)
+}
+/* a function that takes the click event and adds 'X s text to what was clicked.'
 const onClicked = function (event) {
   event.preventDefault()
 
   $(event.target).text('X')
 }
-
+*/
 module.exports = {
   onSignUp,
   onLogIn,
   onLogOut,
   onChangePassword,
-  onClicked
+  onCreateGame,
+  onGetStats
 }
