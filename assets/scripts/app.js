@@ -12,7 +12,6 @@ $(() => {
   $('#log-in-form').on('submit', authEvents.onLogIn)
   $('#log-out-button').on('click', authEvents.onLogOut)
   $('#change-password-form').on('submit', authEvents.onChangePassword)
-  $('#placeholder').on('click', authEvents.onClicked)
   $('#create-game').on('submit', authEvents.onCreateGame)
   $('#game-stats').on('submit', authEvents.onGetStats)
 })
