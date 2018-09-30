@@ -1,3 +1,5 @@
+# sh curl-scripts/json/create-game.sh
+
 curl 'https://tic-tac-toe-wdi.herokuapp.com/games' \
   --include \
   --request POST \

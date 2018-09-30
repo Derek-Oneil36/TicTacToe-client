@@ -1,3 +1,5 @@
+# sh curl-scripts/json/update-game.sh
+
 curl 'https://tic-tac-toe-wdi.herokuapp.com/games/:id' \
   --include \
   --request PATCH \

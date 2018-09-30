@@ -1,3 +1,5 @@
+# sh curl-scripts/json/change-password.sh
+
 curl "https://tic-tac-toe-wdi.herokuapp.com/change-password" \
 --include \
 --request PATCH \

@@ -58,24 +58,13 @@ const addPlayer = function (post) {
     outcome(board)
     // switches the player
     switchPlayer(currentPlayer)
-
+    // returns the currentPlayer
     return currentPlayer
   }
   // return outcome(board)
 }
 
-/*
-addPlayer(6)
-addPlayer(5)
-addPlayer(5)
-addPlayer(6)
-addPlayer(0)
-addPlayer(7)
-addPlayer(1)
-addPlayer(8)
-*/
-console.log(board)
-
+// We're exporting the functions so they can be used in other files.
 module.exports = {
   addPlayer,
   switchPlayer,
