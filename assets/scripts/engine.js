@@ -61,7 +61,6 @@ const addPlayer = function (post) {
     // returns the currentPlayer
     return currentPlayer
   }
-  // return outcome(board)
 }
 
 // We're exporting the functions so they can be used in other files.
