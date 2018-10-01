@@ -95,20 +95,20 @@ const getStats = function (gameData) {
 the clicked function will return the ajax request to update the gameboard
 on the server side.
 */
-const clicked = function (gameData) {
+const clicked = function (index, value) {
   return $.ajax({
-    url: config.apiUrl + `games/:${store.user.id}`,
+    url: config.apiUrl + `games/${store.game.id}`,
     headers: {
       Authorization: `Token token=${store.user.token}`
     },
     method: 'PATCH',
-    gameData: {
+    data: {
       'game': {
         'cell': {
-          'index': 0,
-          'value': 'x'
+          'index': `${index}`,
+          'value': `${value}`
         },
-        'over': false
+        'over': `${store.game.over}`
       }
     }
   })

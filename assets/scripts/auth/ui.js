@@ -8,7 +8,7 @@ const store = require('../store.js')
 
 // Will display a green message informing the user the action was successful.
 const signUpSuccess = function () {
-  $('#display-message').html('Sign up successful')
+  $('#display-message').html('Sign up successful, please sign in')
   $('#display-message').css('color', 'green')
   $('#sign-up-form').trigger('reset')
 }
@@ -27,10 +27,9 @@ const signInSuccess = function (response) {
   $('#sign-up-form').trigger('reset')
   store.user = response.user
   $('#sign-up-form').addClass('hidden')
-  $('#log-in-form').addClass('hidden')
+  $('#sign-in-form').addClass('hidden')
   $('#change-password-form').removeClass('hidden')
   $('#log-out-button').removeClass('hidden')
-  $('#container').removeClass('hidden')
   $('#create-game').removeClass('hidden')
   $('#game-stats').removeClass('hidden')
 }
@@ -43,14 +42,14 @@ const signInFailure = function () {
 }
 
 // Will display a green message informing the user the action was successful.
-const logOutSuccess = function (response) {
+const logOutSuccess = function () {
   $('#display-message').html('You are now logged out')
   $('#display-message').css('color', 'green')
   $('#sign-up-form').removeClass('hidden')
-  $('#log-in-form').removeClass('hidden')
+  $('#sign-in-form').removeClass('hidden')
   $('#change-password-form').addClass('hidden')
   $('#log-out-button').addClass('hidden')
-  $('#create-game').addClass('hidden')
+  $('#game-board').addClass('hidden')
   $('#create-game').addClass('hidden')
   $('#game-stats').addClass('hidden')
 }
@@ -76,10 +75,12 @@ const changePasswordFailure = function () {
 }
 
 // Will display a green message informing the user the action was successful.
-const createGameSuccess = function () {
+const createGameSuccess = function (response) {
   $('#display-message').html('Game Created!')
   $('#display-message').css('color', 'green')
   $('#create-game').trigger('reset')
+  $('#game-board').removeClass('hidden')
+  store.game = response.game
 }
 
 // Will display a red message informing the user the action failed.

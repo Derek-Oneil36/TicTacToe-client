@@ -123,10 +123,10 @@ clickedFailure if it didn't work.
 const onClicked = function (event) {
   event.preventDefault()
   console.log(event)
-  const id = $(event.target)[0]['id']
-  $(event.target).text(engine.addPlayer(id))
-
-  api.clicked(id)
+  const index = $(event.target)[0]['id']
+  const value = $(event.target).text(engine.addPlayer(index)).text()
+  console.log('value is', value)
+  api.clicked(index, value)
     .then(ui.clickedSuccess)
     .catch(ui.clickedFailure)
 }

@@ -25,11 +25,14 @@ body {
   color: black;
   display: flex;
   height: 100px;
-  justify-content: center
+  justify-content: center;
 
 }
 
-
 .spot {
   background-color: white;
+}
+
+.hidden {
+  display: none;
 }

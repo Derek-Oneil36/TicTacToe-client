@@ -48,12 +48,12 @@ the position is empty, the current player will then switch when we call back
 and use the switchPlayer function. Else nothing will happen if theposition is
 occupied.
 */
-const addPlayer = function (post) {
-  console.log(post)
+const addPlayer = function (index) {
+  console.log('the index is ', index)
   // checking to see if the spot on the board is empty
-  if (board[post] === '' && outcome(board) === 'Keep Playing') {
+  if (board[index] === '' && outcome(board) === 'Keep Playing') {
     // adding the current player to the spot
-    board[post] = currentPlayer
+    board[index] = currentPlayer
     // checking for a winner
     outcome(board)
     // switches the player
