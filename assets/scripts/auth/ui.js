@@ -28,8 +28,11 @@ const signInSuccess = function (response) {
   store.user = response.user
   $('#sign-up-form').addClass('hidden')
   $('#log-in-form').addClass('hidden')
-  $('#log-in-form').removeClass('hidden')
+  $('#change-password-form').removeClass('hidden')
   $('#log-out-button').removeClass('hidden')
+  $('#container').removeClass('hidden')
+  $('#create-game').removeClass('hidden')
+  $('#game-stats').removeClass('hidden')
 }
 
 // Will display a red message informing the user the action failed.
@@ -47,6 +50,9 @@ const logOutSuccess = function (response) {
   $('#log-in-form').removeClass('hidden')
   $('#change-password-form').addClass('hidden')
   $('#log-out-button').addClass('hidden')
+  $('#create-game').addClass('hidden')
+  $('#create-game').addClass('hidden')
+  $('#game-stats').addClass('hidden')
 }
 
 // Will display a red message informing the user the action failed.
@@ -73,19 +79,19 @@ const changePasswordFailure = function () {
 const createGameSuccess = function () {
   $('#display-message').html('Game Created!')
   $('#display-message').css('color', 'green')
-  $('#change-password-form').trigger('reset')
+  $('#create-game').trigger('reset')
 }
 
 // Will display a red message informing the user the action failed.
 const createGameFailure = function () {
   $('#display-message').html('Something went wrong, please try again')
   $('#display-message').css('color', 'red')
-  $('#change-password-form').trigger('reset')
+  $('#create-game').trigger('reset')
 }
 
 // Will display a green message informing the user the action was successful.
 const getStatsSuccess = function () {
-  $('#display-message').html('Your password has changed')
+  $('#display-message').html('Player Stats!')
   $('#display-message').css('color', 'green')
   $('#change-password-form').trigger('reset')
 }

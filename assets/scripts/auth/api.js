@@ -66,14 +66,13 @@ create game allows a user to clear the gameboard and start a new game
 communicating with the game server by calling and returning the ajax call
 on the game api.
 */
-const createGame = function (gameData) {
+const createGame = function () {
   return $.ajax({
     url: config.apiUrl + 'games',
     headers: {
       Authorization: `Token token=${store.user.token}`
     },
-    method: 'POST',
-    data: gameData
+    method: 'POST'
   })
 }
 
@@ -98,18 +97,18 @@ on the server side.
 */
 const clicked = function (gameData) {
   return $.ajax({
-    url: config.apiUrl + 'games/:id',
+    url: config.apiUrl + `games/:${store.user.id}`,
     headers: {
       Authorization: `Token token=${store.user.token}`
     },
     method: 'PATCH',
-    data: {
-      "game": {
-        "cell": {
-          "index": 0,
-          "value": "x"
+    gameData: {
+      'game': {
+        'cell': {
+          'index': 0,
+          'value': 'x'
         },
-        "over": false
+        'over': false
       }
     }
   })
