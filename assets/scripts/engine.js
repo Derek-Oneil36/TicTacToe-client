@@ -1,10 +1,11 @@
 'use strict'
-
+const store = require('./store.js')
 // The game board
 const board = ['', '', '', '', '', '', '', '', '']
 
-// the current player
 let currentPlayer = 'x'
+// the current player
+// let currentPlayer = store.currentPlayer
 
 // A function that switches current player between 'X' and 'O'
 const switchPlayer = function () {
@@ -49,16 +50,18 @@ and use the switchPlayer function. Else nothing will happen if theposition is
 occupied.
 */
 const addPlayer = function (index) {
-  console.log('the index is ', index)
+  // console.log('the index is ', index)
   // checking to see if the spot on the board is empty
-  if (board[index] === '' && outcome(board) === 'Keep Playing') {
+  if (board[index] === '' && outcome() === 'Keep Playing') {
     // adding the current player to the spot
     board[index] = currentPlayer
     // checking for a winner
-    outcome(board)
+    outcome()
     // switches the player
     switchPlayer(currentPlayer)
-    // returns the currentPlayer
+    console.log(currentPlayer)
+    // returns the store.currentPlayer
+    store.currentPlayer = currentPlayer
     return currentPlayer
   }
 }
@@ -67,7 +70,7 @@ const addPlayer = function (index) {
 module.exports = {
   addPlayer,
   switchPlayer,
-  outcome,
-  currentPlayer
+  outcome
+  // currentPlayer
 
 }

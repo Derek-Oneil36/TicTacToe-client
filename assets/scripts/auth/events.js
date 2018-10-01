@@ -6,6 +6,7 @@ use thier exported functions in this file.
 */
 const ui = require('./ui.js')
 const api = require('./api.js')
+const store = require('../store.js')
 const engine = require('../engine.js')
 const getFormFields = require('../../../lib/get-form-fields')
 
@@ -124,8 +125,9 @@ const onClicked = function (event) {
   event.preventDefault()
   console.log(event)
   const index = $(event.target)[0]['id']
+  $(event.target).text(engine.addPlayer(index))
   const value = $(event.target).text(engine.addPlayer(index)).text()
-  console.log('value is', value)
+  store.index = index
   api.clicked(index, value)
     .then(ui.clickedSuccess)
     .catch(ui.clickedFailure)

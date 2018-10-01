@@ -4,7 +4,9 @@
 we are requiring store.js file so we can use the
 exported functions in this file.
 */
+// const events = require('./events.js')
 const store = require('../store.js')
+const engine = require('../engine.js')
 
 // Will display a green message informing the user the action was successful.
 const signUpSuccess = function () {
@@ -78,7 +80,6 @@ const changePasswordFailure = function () {
 const createGameSuccess = function (response) {
   $('#display-message').html('Game Created!')
   $('#display-message').css('color', 'green')
-  $('#create-game').trigger('reset')
   $('#game-board').removeClass('hidden')
   store.game = response.game
 }
@@ -87,35 +88,39 @@ const createGameSuccess = function (response) {
 const createGameFailure = function () {
   $('#display-message').html('Something went wrong, please try again')
   $('#display-message').css('color', 'red')
-  $('#create-game').trigger('reset')
 }
 
 // Will display a green message informing the user the action was successful.
 const getStatsSuccess = function () {
   $('#display-message').html('Player Stats!')
   $('#display-message').css('color', 'green')
-  $('#change-password-form').trigger('reset')
 }
 
 // Will display a red message informing the user the action failed.
 const getStatsFailure = function () {
   $('#display-message').html('Something went wrong, please try again')
   $('#display-message').css('color', 'red')
-  $('#change-password-form').trigger('reset')
 }
 
 // Will display a green message informing the user the action was successful.
 const clickedSuccess = function () {
-  $('#display-message').html('Clicked worked')
-  $('#display-message').css('color', 'green')
-  $('#change-password-form').trigger('reset')
+  console.log(store.currentPlayer)
+  if (engine.outcome(store.index) === 'Keep Playing') {
+    $('#display-message').html(store.currentPlayer + ' Your Next!')
+    $('#display-message').css('color', 'green')
+  } else if (engine.outcome(store.index) === 'Draw!') {
+    $('#display-message').html('Draw start a new game!')
+    $('#display-message').css('color', 'green')
+  } else {
+    $('#display-message').html(store.currentPlayer + ' Wins!')
+    $('#display-message').css('color', 'green')
+  }
 }
 
 // Will display a red message informing the user the action failed.
 const clickedFailure = function () {
   $('#display-message').html('Something went wrong, please try again')
   $('#display-message').css('color', 'red')
-  $('#change-password-form').trigger('reset')
 }
 
 // We're exporting functions so they can be used in other files
