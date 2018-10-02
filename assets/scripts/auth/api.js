@@ -80,14 +80,13 @@ const createGame = function () {
 The get stats function returns all the games played/recorded by the server
 that was stored in their account using the ajax call on the game api.
 */
-const getStats = function (gameData) {
+const getStats = function () {
   return $.ajax({
     url: config.apiUrl + 'games',
     headers: {
       Authorization: `Token token=${store.user.token}`
     },
-    method: 'GET',
-    data: gameData
+    method: 'GET'
   })
 }
 

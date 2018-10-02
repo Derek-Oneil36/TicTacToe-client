@@ -7,6 +7,7 @@ exported functions in this file.
 // const events = require('./events.js')
 const store = require('../store.js')
 const engine = require('../engine.js')
+// const data = require('./api.js')
 
 // Will display a green message informing the user the action was successful.
 const signUpSuccess = function () {
@@ -54,11 +55,12 @@ const logOutSuccess = function () {
   $('#game-board').addClass('hidden')
   $('#create-game').addClass('hidden')
   $('#game-stats').addClass('hidden')
+  delete store.game
 }
 
 // Will display a red message informing the user the action failed.
 const logOutFailure = function () {
-  $('#display-message').html('Something went wrong, please try again')
+  $('#display-message').html('Failed to Logout, Please Try Again')
   $('#display-message').css('color', 'red')
 }
 
@@ -71,14 +73,14 @@ const changePasswordSuccess = function () {
 
 // Will display a red message informing the user the action failed.
 const changePasswordFailure = function () {
-  $('#display-message').html('Something went wrong, please try again')
+  $('#display-message').html('Failed to Change Password, Please Try Again')
   $('#display-message').css('color', 'red')
   $('#change-password-form').trigger('reset')
 }
 
 // Will display a green message informing the user the action was successful.
 const createGameSuccess = function (response) {
-  $('#display-message').html('Game Created!')
+  $('#display-message').html('New Game!')
   $('#display-message').css('color', 'green')
   $('#game-board').removeClass('hidden')
   store.game = response.game
@@ -91,28 +93,36 @@ const createGameFailure = function () {
 }
 
 // Will display a green message informing the user the action was successful.
-const getStatsSuccess = function () {
-  $('#display-message').html('Player Stats!')
+const getStatsSuccess = function (data) {
+  $('#display-message').html(`You Played: ${data.games.length} Games`)
   $('#display-message').css('color', 'green')
 }
 
 // Will display a red message informing the user the action failed.
 const getStatsFailure = function () {
-  $('#display-message').html('Something went wrong, please try again')
+  $('#display-message').html('You may not be logged in!')
   $('#display-message').css('color', 'red')
 }
 
-// Will display a green message informing the user the action was successful.
+// Will display a certain game message if the requirements are met.
 const clickedSuccess = function () {
   console.log(store.currentPlayer)
   if (engine.outcome(store.index) === 'Keep Playing') {
-    $('#display-message').html(store.currentPlayer + ' Your Next!')
-    $('#display-message').css('color', 'green')
+    if (store.currentPlayer === 'o') {
+      $('#display-message').html("X you're next!")
+      $('#display-message').css('color', 'green')
+    } else if (store.currentPlayer === 'x') {
+      $('#display-message').html("O you're next!")
+      $('#display-message').css('color', 'green')
+    }
   } else if (engine.outcome(store.index) === 'Draw!') {
     $('#display-message').html('Draw start a new game!')
     $('#display-message').css('color', 'green')
+  } else if (store.currentPlayer === 'x') {
+    $('#display-message').html('X YOU WIN!')
+    $('#display-message').css('color', 'green')
   } else {
-    $('#display-message').html(store.currentPlayer + ' Wins!')
+    $('#display-message').html('O YOU WIN!')
     $('#display-message').css('color', 'green')
   }
 }

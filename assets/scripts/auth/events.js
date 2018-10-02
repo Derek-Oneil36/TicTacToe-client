@@ -83,15 +83,21 @@ createGame function from the api.js file to clear the game board and start a
 new game. It will call either the createGameSuccess if the function worked or
 call createGameFailure if it didn't work.
 */
-const onCreateGame = function (event) {
+const onCreateGame = function () {
   // stops the page from refreshing when action is called
   event.preventDefault()
-
   // creates a userData variable by using the get getFormFields function on
   // event.target
-  const userData = getFormFields(event.target)
-  console.log(userData)
-  api.createGame(userData)
+  for (let i = 0; i < 9; i++) {
+    $(`#${i}`).text('')
+  }
+  engine.board.fill('')
+  delete store.game
+  store.index = 0
+  for (let i = 0; i < 9; i++) {
+    $(`#${i}`).text('')
+  }
+  api.createGame()
     .then(ui.createGameSuccess)
     .catch(ui.createGameFailure)
 }
@@ -106,11 +112,7 @@ const onGetStats = function (event) {
   // stops the page from refreshing when action is called
   event.preventDefault()
 
-  // creates a userData variable by using the get getFormFields function on
-  // event.target
-  const formData = getFormFields(event.target)
-
-  api.getStats(formData)
+  api.getStats()
     .then(ui.getStatsSuccess)
     .catch(ui.getStatsFailure)
 }
@@ -123,10 +125,11 @@ clickedFailure if it didn't work.
 */
 const onClicked = function (event) {
   event.preventDefault()
-  console.log(event)
+  console.log(event.target)
   const index = $(event.target)[0]['id']
-  $(event.target).text(engine.addPlayer(index))
-  const value = $(event.target).text(engine.addPlayer(index)).text()
+  console.log(index)
+  // $(event.target).text(engine.addPlayer(index))
+  const value = $(event.target).html(engine.addPlayer(index)).text()
   store.index = index
   api.clicked(index, value)
     .then(ui.clickedSuccess)

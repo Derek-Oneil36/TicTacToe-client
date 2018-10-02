@@ -5,7 +5,7 @@ curl `https://tic-tac-toe-wdi.herokuapp.com/games/:${ID}` \
   --request PATCH \
   --header "Content-Type: application/json" \
   --header "Authorization: Token token=${TOKEN}"\
-  --data '{
+  --data {
     "id":
     "game": {
       "cell": {
@@ -14,6 +14,6 @@ curl `https://tic-tac-toe-wdi.herokuapp.com/games/:${ID}` \
       },
       "over": false
     }
-  }'
+  }
 
 echo
