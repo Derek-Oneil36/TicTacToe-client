@@ -86,16 +86,6 @@ call createGameFailure if it didn't work.
 const onCreateGame = function () {
   // stops the page from refreshing when action is called
   event.preventDefault()
-  // creates a userData variable by using the get getFormFields function on
-  // event.target
-  // for (let i = 0; i < 9; i++) {
-  // $(`#${i}`).text('')
-  // }
-  // engine.board.fill('')
-  store.index = 0
-  for (let i = 0; i < 9; i++) {
-    $(`#${i}`).text('')
-  }
   api.createGame()
     .then(ui.createGameSuccess)
     .catch(ui.createGameFailure)

@@ -84,6 +84,12 @@ const createGameSuccess = function (response) {
   $('#display-message').css('color', 'green')
   $('#game-board').removeClass('hidden')
   store.game = response.game
+  store.index = 0
+  for (let i = 0; i < 9; i++) {
+    $(`#${i}`).text('')
+  }
+  engine.board = ['', '', '', '', '', '', '', '', '']
+  // store.game.over = false
 }
 
 // Will display a red message informing the user the action failed.

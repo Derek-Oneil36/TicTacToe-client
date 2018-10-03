@@ -1,9 +1,9 @@
 'use strict'
 const store = require('./store.js')
 // The game board
-const board = ['', '', '', '', '', '', '', '', '']
+let board = ['', '', '', '', '', '', '', '', '']
 
-let currentPlayer = 'o'
+let currentPlayer = 'x'
 // the current player
 // let currentPlayer = store.currentPlayer
 
@@ -64,14 +64,19 @@ const addPlayer = function (index) {
   if (board[index] === '' && outcome() === 'Keep Playing') {
     // adding the current player to the spot
     board[index] = currentPlayer
+    console.log(board)
     // checking for a winner
     outcome()
     // switches the player
     switchPlayer(currentPlayer)
-    console.log(currentPlayer)
-    // returns the store.currentPlayer
-    store.currentPlayer = currentPlayer
-    return currentPlayer
+    // An if that returns the value needed for the board when clicked.
+    if (currentPlayer === 'o') {
+      store.currentPlayer = 'x'
+      return 'x'
+    } else {
+      store.currentPlayer = 'o'
+      return 'o'
+    }
   }
 }
 
@@ -79,7 +84,7 @@ const addPlayer = function (index) {
 module.exports = {
   addPlayer,
   switchPlayer,
-  outcome
-  // currentPlayer
+  outcome,
+  board
 
 }
