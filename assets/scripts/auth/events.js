@@ -126,10 +126,11 @@ const onClicked = function (event) {
   event.preventDefault()
   console.log(event.target)
   const index = $(event.target)[0]['id']
+  store.game.index = index
   console.log(index)
   // $(event.target).text(engine.addPlayer(index))
   const value = $(event.target).html(engine.addPlayer(index)).text()
-  store.index = index
+  store.game.value = value
   api.clicked(index, value)
     .then(ui.clickedSuccess)
     .catch(ui.clickedFailure)
