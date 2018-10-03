@@ -88,11 +88,10 @@ const onCreateGame = function () {
   event.preventDefault()
   // creates a userData variable by using the get getFormFields function on
   // event.target
-  for (let i = 0; i < 9; i++) {
-    $(`#${i}`).text('')
-  }
+  // for (let i = 0; i < 9; i++) {
+  // $(`#${i}`).text('')
+  // }
   // engine.board.fill('')
-  delete store.game
   store.index = 0
   for (let i = 0; i < 9; i++) {
     $(`#${i}`).text('')
