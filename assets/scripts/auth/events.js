@@ -91,7 +91,7 @@ const onCreateGame = function () {
   for (let i = 0; i < 9; i++) {
     $(`#${i}`).text('')
   }
-  engine.board.fill('')
+  // engine.board.fill('')
   delete store.game
   store.index = 0
   for (let i = 0; i < 9; i++) {

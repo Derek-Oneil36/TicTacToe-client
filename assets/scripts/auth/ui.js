@@ -119,10 +119,10 @@ const clickedSuccess = function () {
     $('#display-message').html('Draw start a new game!')
     $('#display-message').css('color', 'green')
   } else if (store.currentPlayer === 'x') {
-    $('#display-message').html('X YOU WIN!')
+    $('#display-message').html('X YOU WIN! Start a New Game')
     $('#display-message').css('color', 'green')
   } else {
-    $('#display-message').html('O YOU WIN!')
+    $('#display-message').html('O YOU WIN! Start a New Game')
     $('#display-message').css('color', 'green')
   }
 }
