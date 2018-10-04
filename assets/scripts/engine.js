@@ -3,9 +3,8 @@ const store = require('./store.js')
 // The game board
 const board = ['', '', '', '', '', '', '', '', '']
 
-let currentPlayer = 'x'
 // the current player
-// let currentPlayer = store.currentPlayer
+let currentPlayer = 'x'
 
 // A function that switches current player between 'X' and 'O'
 const switchPlayer = function () {
