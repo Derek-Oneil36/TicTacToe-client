@@ -114,10 +114,10 @@ clickedFailure if it didn't work.
 */
 const onClicked = function (event) {
   event.preventDefault()
-  console.log(event.target)
+  // console.log(event.target)
   const index = $(event.target)[0]['id']
   store.game.index = index
-  console.log(index)
+  // console.log(index)
   // $(event.target).text(engine.addPlayer(index))
   const value = $(event.target).html(engine.addPlayer(index)).text()
   store.game.value = value

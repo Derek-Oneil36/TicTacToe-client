@@ -1,7 +1,7 @@
 'use strict'
 const store = require('./store.js')
 // The game board
-let board = ['', '', '', '', '', '', '', '', '']
+const board = ['', '', '', '', '', '', '', '', '']
 
 let currentPlayer = 'x'
 // the current player
@@ -23,28 +23,28 @@ const switchPlayer = function () {
 const outcome = function () {
   if (board[0] !== '' && board[0] === board[1] && board[1] === board[2]) {
     store.game.over = true
-    return 'The Winner is ' + board[0]
+    return store.currentPlayer
   } else if (board[3] !== '' && board[3] === board[4] && board[4] === board[5]) {
     store.game.over = true
-    return 'The Winner is ' + board[3]
+    return store.currentPlayer
   } else if (board[6] !== '' && board[6] === board[7] && board[7] === board[8]) {
     store.game.over = true
-    return 'The Winner is ' + board[6]
+    return store.currentPlayer
   } else if (board[0] !== '' && board[0] === board[3] && board[3] === board[6]) {
     store.game.over = true
-    return 'The Winner is ' + board[0]
+    return store.currentPlayer
   } else if (board[1] !== '' && board[1] === board[4] && board[4] === board[7]) {
     store.game.over = true
-    return 'The Winner is ' + board[1]
+    return store.currentPlayer
   } else if (board[2] !== '' && board[2] === board[5] && board[5] === board[8]) {
     store.game.over = true
-    return 'The Winner is ' + board[2]
+    return store.currentPlayer
   } else if (board[0] !== '' && board[0] === board[4] && board[4] === board[8]) {
     store.game.over = true
-    return 'The Winner is ' + board[0]
+    return store.currentPlayer
   } else if (board[2] !== '' && board[2] === board[4] && board[4] === board[6]) {
     store.game.over = true
-    return 'The Winner is ' + board[3]
+    return store.currentPlayer
   } else if (board.every(element => element !== '')) {
     store.game.over = true
     return 'Draw!'
@@ -80,11 +80,27 @@ const addPlayer = function (index) {
   }
 }
 
+// resets the local game board array and html grid
+const resetGame = function () {
+  currentPlayer = 'x'
+  store.currentPlayer = 'x'
+
+  // resets the local board array
+  for (let i = 0; i < board.length; i++) {
+    board[i] = ''
+  }
+  // resests game borad html
+  for (let i = 0; i < 9; i++) {
+    $(`#${i}`).text('')
+  }
+}
+
 // We're exporting the functions so they can be used in other files.
 module.exports = {
   addPlayer,
   switchPlayer,
   outcome,
-  board
+  board,
+  resetGame
 
 }
