@@ -23,7 +23,7 @@ const onSignUp = function (event) {
   // creates a userData variable by using the get getFormFields function on
   // event.target
   const userData = getFormFields(event.target)
-  console.log(userData)
+
   api.signUp(userData)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)

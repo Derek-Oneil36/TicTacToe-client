@@ -63,7 +63,7 @@ const addPlayer = function (index) {
   if (board[index] === '' && outcome() === 'Keep Playing') {
     // adding the current player to the spot
     board[index] = currentPlayer
-    console.log(board)
+
     // checking for a winner
     outcome()
     // switches the player
