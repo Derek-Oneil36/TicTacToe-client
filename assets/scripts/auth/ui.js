@@ -55,6 +55,7 @@ const logOutSuccess = function () {
   $('#game-board').addClass('hidden')
   $('#create-game').addClass('hidden')
   $('#game-stats').addClass('hidden')
+  $('#change-password-form').trigger('reset')
   delete store.game
 }
 
