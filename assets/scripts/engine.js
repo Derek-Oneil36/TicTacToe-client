@@ -79,6 +79,14 @@ const addPlayer = function (index) {
   }
 }
 
+const spotCheck = function (index) {
+  if (board[index] === '') {
+    return true
+  } else {
+    return false
+  }
+}
+
 // resets the local game board array and html grid
 const resetGame = function () {
   currentPlayer = 'x'
@@ -100,6 +108,7 @@ module.exports = {
   switchPlayer,
   outcome,
   board,
+  spotCheck,
   resetGame
 
 }

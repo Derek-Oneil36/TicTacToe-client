@@ -117,13 +117,19 @@ const onClicked = function (event) {
   // console.log(event.target)
   const index = $(event.target)[0]['id']
   store.game.index = index
-  // console.log(index)
-  // $(event.target).text(engine.addPlayer(index))
-  const value = $(event.target).html(engine.addPlayer(index)).text()
-  store.game.value = value
-  api.clicked(index, value)
-    .then(ui.clickedSuccess)
-    .catch(ui.clickedFailure)
+
+  if (engine.outcome(index) === 'Keep Playing') {
+    if (engine.spotCheck(index) === false) {
+      $('#display-message').html('Invalid Move! Choose Another Spot!')
+      $('#display-message').css('color', 'red')
+    } else {
+      const value = $(event.target).html(engine.addPlayer(index)).text()
+      store.game.value = value
+      api.clicked(index, value)
+        .then(ui.clickedSuccess)
+        .catch(ui.clickedFailure)
+    }
+  }
 }
 
 // we're exporting functions so that they cn be used in other files.

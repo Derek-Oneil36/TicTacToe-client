@@ -36,7 +36,6 @@ I formated my whole application here, from centering everything and coloring my 
 # Unsolved Issues
 * CSS/Bootstrap: I Need to configure the sizing margins of the gameboard so that it stays at a fixed size even when the browser window adjusts in size.
 * CSS/Bootstrap: I need to make sure the columns of the gameboard don't collapse on each other when the browser window is adjusted to a smaller size or is viewed in mobile mode.
-* Game Functionality: I need to create a condition that stops calling meaningless patches to the api once the game is over. Data isn't being updated on either end once the game is over, so the patch that keepsing being called when you click on the gameboard before starting a new game is essentially useless.
 
 # User Stories
 * I will be able to create an account with my e-mail, password, and password comfirmation.
