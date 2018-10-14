@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>ExTicTacToe</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <div id="wrapper">
+      <h1>Extreme Tic Tac Toe</h1>
+      <h3 id="display-message"></h3>
+
+      <form id="sign-up-form">
+          <input required type="email" name="credentials[email]" placeholder="Enter Email"/>
+          <input required type="password" name="credentials[password]" placeholder="Enter Password"/>
+          <input required type="password" name="credentials[password_confirmation]" placeholder="Confirm Password"/>
+          <input type="submit" value="Sign Up">
+      </form>
+
+      <br>
+
+      <form id="sign-in-form">
+          <input required type="email" name="credentials[email]" placeholder="Enter Email"/>
+          <input required type="password" name="credentials[password]" placeholder="Enter Password"/>
+          <input type="submit" value="Log In">
+      </form>
+
+      <br>
+
+      <form id="change-password-form" class="hidden">
+          <legend>Change Password</legend>
+          <input required type="password" name="passwords[old]" placeholder="Enter Old Password"/>
+          <input required type="password" name="passwords[new]" placeholder="Enter New Password"/>
+          <input type="submit">
+      </form>
+
+        <br>
+
+        <span><button id="create-game" class="hidden">New Game</button></span>
+
+        <span><button id="game-stats" class="hidden">User Stats</button></span>
+
+        <span><button id="log-out-button" class="hidden">Log out</button></span>
+
+        <br>
+
+          <div id="game-board" class="container hidden">
+            <h2>Game Board</h2>
+            <div class="row">
+            <div class="col-md-4 box spot" id="0"></div>
+            <div class="col-md-4 box spot" id="1"></div>
+            <div class="col-md-4 box spot" id="2"></div>
+            <div class="col-md-4 box spot" id="3"></div>
+            <div class="col-md-4 box spot" id="4"></div>
+            <div class="col-md-4 box spot" id="5"></div>
+            <div class="col-md-4 box spot" id="6"></div>
+            <div class="col-md-4 box spot" id="7"></div>
+            <div class="col-md-4 box spot" id="8"></div>
+            </div>
+          </div>
+        </div>
+    </body>
+</html>
