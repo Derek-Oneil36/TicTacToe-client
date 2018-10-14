@@ -14,21 +14,24 @@ const signUpSuccess = function () {
   $('#display-message').html('Account Created, Please Sign In.')
   $('#display-message').css('color', 'green')
   $('#sign-up-form').trigger('reset')
+  $('#sign-in-form').trigger('reset')
 }
 
 // Will display a red message informing the user the action failed.
 const signUpFailure = function () {
-  $('#display-message').html('Passwords Do Not Match! Please Try Again.')
+  $('#display-message').html('Sign Up Failed! Please Try Again.')
   $('#display-message').css('color', 'red')
   $('#sign-up-form').trigger('reset')
+  $('#sign-in-form').trigger('reset')
 }
 
 // Will display a green message informing the user the action was successful.
 const signInSuccess = function (response) {
+  store.user = response.user
   $('#display-message').html('Logged in.')
   $('#display-message').css('color', 'green')
   $('#sign-in-form').trigger('reset')
-  store.user = response.user
+  $('#sign-up-form').trigger('reset')
   $('#sign-up-form').addClass('hidden')
   $('#sign-in-form').addClass('hidden')
   $('#change-password-form').removeClass('hidden')
@@ -42,6 +45,7 @@ const signInFailure = function () {
   $('#display-message').html('Username and Password Do Not Match! Please Try Again.')
   $('#display-message').css('color', 'red')
   $('#sign-in-form').trigger('reset')
+  $('#sign-up-form').trigger('reset')
 }
 
 // Will display a green message informing the user the action was successful.
@@ -63,6 +67,7 @@ const logOutSuccess = function () {
 const logOutFailure = function () {
   $('#display-message').html('Failed to Logout, Please Try Again.')
   $('#display-message').css('color', 'red')
+  $('#change-password-form').trigger('reset')
 }
 
 // Will display a green message informing the user the action was successful.
@@ -84,6 +89,7 @@ const createGameSuccess = function (response) {
   $('#display-message').html('New Game!')
   $('#display-message').css('color', 'green')
   $('#game-board').removeClass('hidden')
+  $('#change-password-form').trigger('reset')
   engine.resetGame()
   store.game = response.game
 }
@@ -92,18 +98,21 @@ const createGameSuccess = function (response) {
 const createGameFailure = function () {
   $('#display-message').html('New Game Not Created, Please Try Again.')
   $('#display-message').css('color', 'red')
+  $('#change-password-form').trigger('reset')
 }
 
 // Will display a green message informing the user the action was successful.
 const getStatsSuccess = function (data) {
   $('#display-message').html(`You Played: ${data.games.length} Games`)
   $('#display-message').css('color', 'green')
+  $('#change-password-form').trigger('reset')
 }
 
 // Will display a red message informing the user the action failed.
 const getStatsFailure = function () {
   $('#display-message').html('You Are Not Logged In!')
   $('#display-message').css('color', 'red')
+  $('#change-password-form').trigger('reset')
 }
 
 // Will display a certain game message if the requirements are met.
